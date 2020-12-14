@@ -1,28 +1,30 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from setuptools import setup
 
-requirements = []  # add Python dependencies here
-# e.g., requirements = ["PyYAML"]
+requirements = [
+    'certifi',
+    'urllib3'
+]
 
 setup(
-    name='awx-custom-credential-plugin-example',
-    version='0.1',
-    author='Ansible, Inc.',
-    author_email='info@ansible.com',
-    description='',
-    long_description='',
+    name='awx-team-password-manager-plugin',
+    version='1.0.0',
+    author='William Davey @ Pawsey Supercomputing Centre',
+    author_email='wdavey@pawsey.org.au',
+    description='Credentials plugin to TPM for AWX',
+    long_description='Credentials plugin for AWX, allowing access to credentials stored in Team Password Manager',
     license='Apache License 2.0',
-    keywords='ansible',
-    url='http://github.com/ansible/awx-custom-credential-plugin-example',
-    packages=['awx_custom_credential_plugin_example'],
+    keywords=['ansible', 'awx', 'team password manager'],
+    url='https://github.com/wdavey/awx-team-password-manager-plugin',
+    packages=['awx_team_password_manager_plugin'],
     include_package_data=True,
     zip_safe=False,
     setup_requires=[],
     install_requires=requirements,
     entry_points = {
         'awx.credential_plugins': [
-            'example_plugin = awx_custom_credential_plugin_example:example_plugin',
+            'tpm_plugin = awx_team_password_manager_plugin:tpm_plugin',
         ]
     }
 )
